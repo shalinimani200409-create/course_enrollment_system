@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories | EduSphere</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">EduSphere</a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/categories">Categories</a>
+      <a href="/courses">Courses</a>
+      <a href="/enroll">Enroll</a>
+      <a href="/login">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section-header">
+      <h2>Explore Learning Categories</h2>
+    </section>
+
+    <section class="card-grid">
+      {% for category in categories %}
+      <article class="card">
+        <div class="card-icon" style="background: {{ category.color }}15; color: {{ category.color }};">{{ category.image }}</div>
+        <h3>{{ category.name }}</h3>
+        <p>{{ category.description }}</p>
+        <a href="/courses?category={{ category.name }}">Open category</a>
+      </article>
+      {% endfor %}
+    </section>
+  </main>
+
+  <p class="footer-note">© <span data-year></span> EduSphere. All rights reserved.</p>
+  <script src="/static/script.js"></script>
+</body>
+</html>

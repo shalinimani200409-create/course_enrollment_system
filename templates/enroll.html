@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enroll | EduSphere</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">EduSphere</a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/categories">Categories</a>
+      <a href="/courses">Courses</a>
+      <a href="/enroll">Enroll</a>
+      <a href="/login">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Enrollment Portal</p>
+        <h1>Reserve your seat in a next-level learning experience.</h1>
+        <p>Choose a category, select an exciting program, and share your details for a guided onboarding experience.</p>
+      </div>
+    </section>
+
+    {% if success %}
+    <div class="success">{{ success }}</div>
+    {% endif %}
+
+    <section class="panel" style="margin-top: 20px;">
+      <form method="post" action="/enroll">
+        <label for="student_name">Full Name</label>
+        <input id="student_name" name="student_name" type="text" required />
+
+        <label for="student_email">Email Address</label>
+        <input id="student_email" name="student_email" type="email" required />
+
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" type="tel" />
+
+        <label for="category_name">Category</label>
+        <select id="category_name" name="category_name" required>
+          {% for category in categories %}
+          <option value="{{ category.name }}">{{ category.name }}</option>
+          {% endfor %}
+        </select>
+
+        <label for="course_name">Preferred Course</label>
+        <select id="course_name" name="course_name" required>
+          {% for course in courses %}
+          <option value="{{ course.title }}">{{ course.title }}</option>
+          {% endfor %}
+        </select>
+
+        <button type="submit">Submit Enrollment</button>
+      </form>
+    </section>
+  </main>
+
+  <p class="footer-note">© <span data-year></span> EduSphere. All rights reserved.</p>
+  <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Course Enrollment</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">EduSphere</a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/categories">Categories</a>
+      <a href="/courses">Courses</a>
+      <a href="/enroll">Enroll</a>
+      <a href="/contact">Contact</a>
+      <a class="nav-cta" href="/login">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Smart Learning Platform</p>
+        <h1>Grow your skills with modern, career-ready courses.</h1>
+        <p>Discover curated programs, join exciting learning tracks, and enroll in a few clicks with a polished student experience.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/login">Start Learning</a>
+          <a class="btn btn-secondary" href="/courses">Explore Courses</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <h3>Why students love EduSphere</h3>
+        <ul>
+          <li>Flexible learning paths</li>
+          <li>Industry-focused programs</li>
+          <li>Fast and secure enrollment</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <div class="stat-card">
+        <strong>{{ stats.categories }}</strong>
+        <span>Learning Categories</span>
+      </div>
+      <div class="stat-card">
+        <strong>{{ stats.courses }}</strong>
+        <span>Active Courses</span>
+      </div>
+      <div class="stat-card">
+        <strong>{{ stats.enrollments }}</strong>
+        <span>New Enrollments</span>
+      </div>
+    </section>
+
+    <section class="section-header">
+      <h2>Popular Categories</h2>
+      <a href="/categories">View all</a>
+    </section>
+
+    <section class="card-grid">
+      {% for category in categories %}
+      <article class="card">
+        <div class="card-icon" style="background: {{ category.color }}15; color: {{ category.color }};">{{ category.image }}</div>
+        <h3>{{ category.name }}</h3>
+        <p>{{ category.description }}</p>
+        <a href="/courses?category={{ category.name }}">Browse programs</a>
+      </article>
+      {% endfor %}
+    </section>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

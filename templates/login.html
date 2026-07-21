@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | EduSphere</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="auth-shell">
+    <div class="auth-card">
+      <a class="brand" href="/">EduSphere</a>
+      <h1>Welcome back</h1>
+      <p>Sign in to continue your learning journey.</p>
+      {% if error %}
+      <div class="error">{{ error }}</div>
+      {% endif %}
+      <form method="post" action="/
+      login">
+        <label for="username">Email or Username</label>
+        <input id="username" name="username" type="text" placeholder="student@example.com" required />
+
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Enter password" required />
+
+        <button type="submit">Login</button>
+      </form>
+      <p class="muted" style="margin-top: 12px;">New here? <a href="/enroll" style="color: var(--primary); font-weight: 700;">Enroll now</a></p>
+    </div>
+  </div>
+</body>
+</html>

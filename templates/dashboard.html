@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | EduSphere</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">EduSphere</a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/categories">Categories</a>
+      <a href="/courses">Courses</a>
+      <a href="/enroll">Enroll</a>
+      <a href="/login">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Student Dashboard</p>
+        <h1>Welcome back, learner.</h1>
+        <p>Track your pathways, explore new categories, and keep your upcoming enrollments organized.</p>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <div class="stat-card">
+        <strong>{{ stats.categories }}</strong>
+        <span>Categories</span>
+      </div>
+      <div class="stat-card">
+        <strong>{{ stats.courses }}</strong>
+        <span>Courses</span>
+      </div>
+      <div class="stat-card">
+        <strong>{{ stats.enrollments }}</strong>
+        <span>Recent Enrollments</span>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <div class="panel">
+        <div class="section-header">
+          <h2>Available Courses</h2>
+          <a href="/courses">View more</a>
+        </div>
+        <div class="course-list">
+          {% for course in courses %}
+          <div class="course-item">
+            <h3>{{ course.title }}</h3>
+            <p class="muted">{{ course.description }}</p>
+            <div class="muted">Instructor: {{ course.instructor }} • Duration: {{ course.duration }} • Level: {{ course.level }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="section-header">
+          <h2>Recent Enrollments</h2>
+        </div>
+        <div class="list">
+          {% for item in enrollments %}
+          <div class="list-item">
+            <strong>{{ item.student_name }}</strong>
+            <div class="muted">{{ item.course_name }} • {{ item.category_name }}</div>
+            <div class="muted">Status: {{ item.status }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <p class="footer-note">© <span data-year></span> EduSphere. All rights reserved.</p>
+  <script src="/static/script.js"></script>
+</body>
+</html>

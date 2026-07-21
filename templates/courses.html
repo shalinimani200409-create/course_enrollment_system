@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Courses | EduSphere</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">EduSphere</a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/categories">Categories</a>
+      <a href="/courses">Courses</a>
+      <a href="/enroll">Enroll</a>
+      <a href="/login">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section-header">
+      <h2>Our Course Catalog</h2>
+      <a href="/enroll">Reserve a seat</a>
+    </section>
+
+    <form class="panel" method="get" action="/courses" style="margin-bottom: 16px;">
+      <label for="category">Filter by category</label>
+      <select id="category" name="category">
+        <option value="">All categories</option>
+        {% for category in categories %}
+        <option value="{{ category.name }}" {% if selected_category == category.name %}selected{% endif %}>{{ category.name }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" style="margin-top: 10px;">Apply</button>
+    </form>
+
+    <section class="course-list">
+      {% for course in courses %}
+      <article class="course-item">
+        <h3>{{ course.title }}</h3>
+        <p class="muted">{{ course.description }}</p>
+        <div class="muted">Category: {{ course.category_name }} • Instructor: {{ course.instructor }} • Duration: {{ course.duration }} • Level: {{ course.level }} • Seats: {{ course.seats }}</div>
+      </article>
+      {% endfor %}
+    </section>
+  </main>
+
+  <p class="footer-note">© <span data-year></span> EduSphere. All rights reserved.</p>
+  <script src="/static/script.js"></script>
+</body>
+</html>
